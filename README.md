@@ -1,6 +1,6 @@
-# FPbase
+# Yuppytasks
 
-## Yuppytasks
+## FPBase based project
 
 ### Quick Start
 
