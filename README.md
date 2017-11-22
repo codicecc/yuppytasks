@@ -1,6 +1,6 @@
 # FPbase
 
-## My FuelPHP Base
+## Yuppytasks
 
 ### Quick Start
 
@@ -39,13 +39,13 @@ The _Groups_ are:
 
 ### Multilanguage settings
 
-User language value is stored in key "lang" of _profile_fields_ user field 
+User language value is stored in key "lang" of _profile_fields_ user field
 
 ### Send Email
 
-Email2 class, send2 method It is used for Recovery Password 
+Email2 class, send2 method It is used for Recovery Password
 
-### Recovery Password 
+### Recovery Password
 
 # FuelPHP
 
