@@ -7,6 +7,7 @@ class Model_Customer extends \Orm\Model{
 		'id',
 		'name',
 		'note',
+		'closed',
 		'created_at',
 		'updated_at',
 	);

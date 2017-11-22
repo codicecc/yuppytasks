@@ -4,6 +4,10 @@ return array(
     'Scan' => 'Scan',
     'Help' => 'Help',
     'Info' => 'Info',
+    'Closed' => 'Closed',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'Archive' => 'Archive',
 
 		'dashboard' => 'Dashboard',
     'welcome' => 'Welcome',

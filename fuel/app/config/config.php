@@ -344,8 +344,12 @@ return array(
 		),
 		'/admin/scan' => array(
 			 'text'   => 'Scan',
-			 'rights' => 'Controller_Admin_Scan.index'
+			 'rights' => 'Controller_Admin_Scan.index',
 		),
+		'/admin/scan/archive' => array(
+			'text'   => 'Archive',
+			'rights' => 'Controller_Admin_Scan.archive'
+		 ),
 		'/admin/users' => array(
 			 'text'   => 'Users',
 			 'rights' => 'Controller_Admin_Users.index'

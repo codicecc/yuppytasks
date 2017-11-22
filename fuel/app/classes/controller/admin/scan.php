@@ -2,13 +2,36 @@
 class Controller_Admin_Scan extends Controller_Admin
 {
 
-	public function action_index()
-	{
-		$data['scans'] = Model_Scan::find('all');
-		$this->template->title = "Scans";
-		$this->template->content = View::forge('admin/scan/index', $data);
+		public function action_index(){
 
-	}
+			$query = DB::select(array('scans.id','scansId'),'customer_id','slot_number',array('scans.created_at','scansCreated_at'))->from('scans');
+			$query->join('customers');
+			$query->on('customers.id', '=', 'scans.customer_id');
+			$query->where('customers.closed',0);
+
+			$query->as_object();
+			$data['scans'] = $query->execute();
+
+			$this->template->title = "Scans";
+			$this->template->content = View::forge('admin/scan/index', $data);
+
+		}
+
+		public function action_archive(){
+
+			$query = DB::select(array('scans.id','scansId'),'customer_id','slot_number',array('scans.created_at','scansCreated_at'))->from('scans');
+			$query->join('customers');
+			$query->on('customers.id', '=', 'scans.customer_id');
+			$query->where('customers.closed',1);
+
+			$query->as_object();
+			$data['scans'] = $query->execute();
+			$data['archive'] = 1;
+
+			$this->template->title = "Scans";
+			$this->template->content = View::forge('admin/scan/index', $data);
+
+		}
 
 	public function action_view($id = null)
 	{

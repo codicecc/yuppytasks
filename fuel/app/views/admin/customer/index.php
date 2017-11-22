@@ -5,7 +5,7 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Note</th>
+			<th>Closed</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -13,7 +13,7 @@
 <?php foreach ($customers as $item): ?>		<tr>
 
 			<td><?php echo $item->name; ?></td>
-			<td><?php echo $item->note; ?></td>
+			<td><?php echo $item->closed?__("admin.yes"):__("admin.no"); ?>
 			<td>
 				<?php echo Html::anchor('admin/customer/view/'.$item->id, 'View'); ?> |
 				<?php echo Html::anchor('admin/customer/edit/'.$item->id, 'Edit'); ?> |

@@ -14,16 +14,22 @@
 	<tbody>
 <?php foreach ($scans as $item): ?>		<tr>
 
-			<td><?php echo $item->customer->name; ?></td>
+			<td><?php echo Model_Customer::find($item->customer_id)->name; ?></td>
 			<td><?php echo $item->slot_number; ?></td>
-			<td><?php echo Date::forge($item->created_at)->format("%d/%m/%Y  %H:%M"); ?></td>
+			<td><?php echo Date::forge($item->scansCreated_at)->format("%d/%m/%Y  %H:%M"); ?></td>
 			<td><?php //echo $item->note; ?></td>
+			<?php
+				if(!isset($archive)):
+			?>
 			<td>
-				<?php echo Html::anchor('admin/scan/view/'.$item->id, 'View'); ?> |
-				<?php echo Html::anchor('admin/scan/edit/'.$item->id, 'Edit'); ?> |
-				<?php echo Html::anchor('admin/scan/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
+				<?php echo Html::anchor('admin/scan/view/'.$item->scansId, 'View'); ?> |
+				<?php echo Html::anchor('admin/scan/edit/'.$item->scansId, 'Edit'); ?> |
+				<?php echo Html::anchor('admin/scan/delete/'.$item->scansId, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
 
 			</td>
+			<?php
+				endif;
+			?>
 		</tr>
 <?php endforeach; ?>	</tbody>
 </table>

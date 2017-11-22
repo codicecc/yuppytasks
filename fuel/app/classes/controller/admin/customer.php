@@ -2,9 +2,16 @@
 class Controller_Admin_Customer extends Controller_Admin
 {
 
-	public function action_index()
-	{
-		$data['customers'] = Model_Customer::find('all');
+	public function action_index(){
+		$query=Model_Customer::query();
+		if(Input::get()){
+			foreach(Input::get() as $l => $v){
+				if($l=="closed"){
+					$query->where('closed',$v);
+				}
+			}
+		}
+		$data['customers']=$query->get();
 		$this->template->title = "Customers";
 		$this->template->content = View::forge('admin/customer/index', $data);
 
@@ -30,6 +37,7 @@ class Controller_Admin_Customer extends Controller_Admin
 				$customer = Model_Customer::forge(array(
 					'name' => Input::post('name'),
 					'note' => Input::post('note'),
+					'closed' => intval(Input::post('closed')),
 				));
 
 				if ($customer and $customer->save())
@@ -64,6 +72,7 @@ class Controller_Admin_Customer extends Controller_Admin
 		{
 			$customer->name = Input::post('name');
 			$customer->note = Input::post('note');
+			$customer->closed = intval(Input::post('closed'));
 
 			if ($customer->save())
 			{
